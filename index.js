@@ -2,17 +2,21 @@ let choices = ["rock", "paper", "scissors"];
 let playerWins, computerWins;
 
 function game() {    
-    playerWins, computerWins = 0
+    playerWins, computerWins = 0;
+    let playerChoice = "";
     
     for(let i = 0; i < 5; i++) {        
         for(;;) {
-            let playerChoice = prompt("Select: Rock, Paper, or Scissors");
+            playerChoice = prompt("Select: Rock, Paper, or Scissors").toLowerCase();
 
-            if(choices.includes(playerChoice.toLowerCase())) break;
+            if(choices.includes(playerChoice)) break;
             else console.log("Unexpected input: Please type Rock, Paper, or Scissors!");
         }
         let computerChoice = getComputerChoice();
-        console.log(playRound(playerChoice, computerChoice));
+        let msg = playRound(playerChoice, computerChoice);
+        msg == "You win!" ? playerWins++ : computerWins++;
+        console.log(msg);
+        
     }
 }
 
@@ -42,3 +46,5 @@ function playRound(playerChoice, computerChoice) {
 
     return "Error: Unexpected Scenario!";
 }
+
+game();
