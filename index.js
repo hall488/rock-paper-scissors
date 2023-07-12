@@ -2,7 +2,8 @@ let choices = ["rock", "paper", "scissors"];
 let playerWins, computerWins;
 
 function game() {    
-    playerWins, computerWins = 0;
+    playerWins = 0;
+    computerWins = 0;
     let playerChoice = "";
     
     for(let i = 0; i < 5; i++) {        
@@ -14,9 +15,17 @@ function game() {
         }
         let computerChoice = getComputerChoice();
         let msg = playRound(playerChoice, computerChoice);
-        msg == "You win!" ? playerWins++ : computerWins++;
-        console.log(msg);
-        
+        msg == "You win!" ? playerWins++ : "";
+        msg == "You lose!" ? computerWins++ : "";
+        console.log(msg + ` : Round ${i} : Player Score ${playerWins} : Computer Score ${computerWins}`);        
+    }
+
+    if(playerWins == computerWins) {
+        console.log("Tied game!");
+    } else if(playerWins > computerWins) {
+        console.log("Player wins game!")
+    } else {
+        console.log("Player loses game!");
     }
 }
 
