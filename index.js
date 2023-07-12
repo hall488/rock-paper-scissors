@@ -1,6 +1,8 @@
+let choices = ["rock", "paper", "scissors"];
+
 function game() {
     let playerWins, computerWins = 0;
-    let choices = ["rock", "paper", "scissors"];
+    
     for(let i = 0; i < 5; i++) {        
         for(;;) {
             let playerChoice = prompt("Select: Rock, Paper, or Scissors");
@@ -11,4 +13,8 @@ function game() {
         let computerChoice = getComputerChoice();
         console.log(playRound(playerChoice, computerChoice));
     }
+}
+
+function getComputerChoice() {
+    return choices[Math.floor(Math.random()*3)];
 }
