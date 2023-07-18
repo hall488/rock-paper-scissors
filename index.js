@@ -6,7 +6,7 @@ function game() {
     computerWins = 0;
     let playerChoice = "";
     
-    for(let i = 0; i < 5; i++) {        
+    for(;playerWins == 5 || computerWins == 5;) {        
         for(;;) {
             playerChoice = prompt("Select: Rock, Paper, or Scissors").toLowerCase();
 
