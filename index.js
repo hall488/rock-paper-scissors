@@ -19,8 +19,11 @@ let gameBTN = document.querySelector('.submit');
 
 options.forEach( o => {
     o.addEventListener('click', () => {
-        playerChoice = o.getAttribute("data");
-        selectionElement.src = `./img/${playerChoice}.png`;
+        if(gameState == states.selectionPhase) {
+            playerChoice = o.getAttribute("data");
+            selectionElement.src = `./img/${playerChoice}.png`;
+        }
+        
     });
 });
 

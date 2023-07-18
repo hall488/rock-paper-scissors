@@ -3,6 +3,17 @@
     src: url(./font/VT323-Regular.ttf);
 }
 
+@keyframes MoveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+      filter: drop-shadow(0 10px 5px grey);
+    }
+    50% {
+      transform: translateY(-10px);
+      filter: drop-shadow(0 20px 5px grey);
+    }
+  }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -33,10 +44,14 @@
 .versus > img {
     flex: 0 1 100px;    
     image-rendering: pixelated;
+    
+    animation: MoveUpDown 2s linear infinite;
 }
 
 .versus > .middle {
     max-height: 55.17px;
+    filter: none;
+    animation: none;
 }
 
 .game-text {
