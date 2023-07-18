@@ -1,45 +1,90 @@
-let choices = ["rock", "paper", "scissors"];
+const choices = ["rock", "paper", "scissors"];
 let playerWins, computerWins;
+const states = {
+    selectionPhase: 0,
+    resultPhase: 1,
+    endPhase: 2
+}
 
-let playerSelection = "";
+let gameState = states.selectionPhase;
+
+let playerChoice = "";
+let scores = document.querySelectorAll('.scores div');
 let selectionElement = document.querySelector('.versus .player');
+let computerElement = document.querySelector('.versus .computer');
 let options = document.querySelectorAll('.options > img');
+let gameText = document.querySelector('.game-text');
+
+let gameBTN = document.querySelector('.submit');
 
 options.forEach( o => {
     o.addEventListener('click', () => {
-        playerSelection = o.getAttribute("data");
-        selectionElement.src = `./img/${playerSelection}.png`;
+        playerChoice = o.getAttribute("data");
+        selectionElement.src = `./img/${playerChoice}.png`;
     });
 });
 
+gameBTN.addEventListener('click', () => {
+    processGameClick();
+});
 
+function processGameClick() {
+    switch(gameState) {
+        case states.selectionPhase: selectionPhase(); break;
+        case states.resultPhase: resultPhase(); break;
+        case states.endPhase: endPhase(); break;
+    }
+}
 
-function game() {    
+function selectionPhase() {
+    if(playerChoice != "") {               
+
+        let computerChoice = getComputerChoice();
+        computerElement.src = `./img/${computerChoice}.png`;
+        let msg = playRound(playerChoice, computerChoice);
+        msg == "You win!" ? playerWins++ : "You tied!";
+        msg == "You lose!" ? computerWins++ : "You tied!";
+        gameText.textContent = msg; 
+        scores[0].textContent = `Player: ${playerWins}`;
+        scores[1].textContent = `Computer: ${computerWins}`;
+
+        if(playerWins == 5 || computerWins == 5) {
+            gameBTN.src = './img/new_up.png';
+            gameState = states.endPhase;
+        } else {
+            gameBTN.src = './img/next_up.png';
+            gameState = states.resultPhase;
+        }
+        
+    } else {
+        gameText.textContent += '!';
+    }
+}
+
+function resultPhase() {
+
+    gameState = states.selectionPhase;
+    computerElement.src = "";
+    selectionElement.src = "";
+    playerChoice = "";
+    gameBTN.src = "./img/submit_up.png";
+    gameText.textContent = "Choose Your Weapon!";
+    
+}
+
+function endPhase() {
+    resultPhase();
+    
     playerWins = 0;
     computerWins = 0;
-    let playerChoice = "";
-    
-    for(;playerWins == 5 || computerWins == 5;) {        
-        for(;;) {
-            playerChoice = prompt("Select: Rock, Paper, or Scissors").toLowerCase();
 
-            if(choices.includes(playerChoice)) break;
-            else console.log("Unexpected input: Please type Rock, Paper, or Scissors!");
-        }
-        let computerChoice = getComputerChoice();
-        let msg = playRound(playerChoice, computerChoice);
-        msg == "You win!" ? playerWins++ : "";
-        msg == "You lose!" ? computerWins++ : "";
-        console.log(msg + ` : Round ${i} : Player Score ${playerWins} : Computer Score ${computerWins}`);        
-    }
+    scores[0].textContent = `Player: ${playerWins}`;
+    scores[1].textContent = `Computer: ${computerWins}`;
+}
 
-    if(playerWins == computerWins) {
-        console.log("Tied game!");
-    } else if(playerWins > computerWins) {
-        console.log("Player wins game!")
-    } else {
-        console.log("Player loses game!");
-    }
+function game() {    
+    playerWins = 4;
+    computerWins = 4;
 }
 
 function getComputerChoice() {

@@ -65,9 +65,9 @@
 .buttons {
     display: flex;
     justify-content: center;
+    flex: 0 1 36.5px;
 }
 
 .submit {
-    flex: 0 1 100px;
     image-rendering: pixelated;
 }
