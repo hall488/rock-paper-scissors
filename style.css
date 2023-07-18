@@ -1,0 +1,40 @@
+.container {
+    display: flexbox;
+    flex-direction: column;
+}
+
+.scores {
+    
+}
+
+.scores > .player {
+
+}
+
+.scores > .computer {
+    
+}
+
+.versus {
+
+}
+
+.versus > .player {
+    
+}
+
+.versus > .computer {
+    
+}
+
+.game-text {
+
+}
+
+.options {
+
+}
+
+button {
+
+}
