@@ -26,11 +26,17 @@
     display: flex;
     gap: 32px;
     justify-content: center;
+    align-items: center;
+    flex: 0 1 100px;
 }
 
 .versus > img {
-    flex: 0 1 100px;
+    flex: 0 1 100px;    
     image-rendering: pixelated;
+}
+
+.versus > .middle {
+    max-height: 55.17px;
 }
 
 .game-text {

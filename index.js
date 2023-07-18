@@ -1,6 +1,19 @@
 let choices = ["rock", "paper", "scissors"];
 let playerWins, computerWins;
 
+let playerSelection = "";
+let selectionElement = document.querySelector('.versus .player');
+let options = document.querySelectorAll('.options > img');
+
+options.forEach( o => {
+    o.addEventListener('click', () => {
+        playerSelection = o.getAttribute("data");
+        selectionElement.src = `./img/${playerSelection}.png`;
+    });
+});
+
+
+
 function game() {    
     playerWins = 0;
     computerWins = 0;
