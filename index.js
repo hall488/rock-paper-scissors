@@ -96,8 +96,8 @@ function endPhase() {
 }
 
 function game() {    
-    playerWins = 4;
-    computerWins = 4;
+    playerWins = 0;
+    computerWins = 0;
 }
 
 function getComputerChoice() {
