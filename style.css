@@ -1,43 +1,67 @@
+@font-face {
+    font-family: VT323;
+    src: url(./font/VT323-Regular.ttf);
+}
+
 .container {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
 }
 
 .scores {
     display: flex;
     justify-content: space-between;
-}
-
-.scores > .player {
-
-}
-
-.scores > .computer {
     
+}
+
+.scores > div {
+    font-family: VT323;
+    font-size: 25px;
+    margin:auto;
 }
 
 .versus {
     display: flex;
     gap: 32px;
+    justify-content: center;
 }
 
-.versus > .player {
-    
-}
-
-.versus > .computer {
-    
+.versus > img {
+    flex: 0 1 100px;
+    image-rendering: pixelated;
 }
 
 .game-text {
     text-align: center;
+    font-family: VT323;
+    font-size: 25px;
 }
 
 .options {
     display: flex;
     gap: 16px;
+    justify-content: center;
 }
 
-button {
+.options > img {
+    flex: 0 1 100px;
+    image-rendering: pixelated;
+    border: 5px solid black;
+    border-radius: 20px;
+}
 
+.options > img:hover {
+    background-color: red;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    flex: 0 1 100px;
+    image-rendering: pixelated;
 }
