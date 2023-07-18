@@ -1,10 +1,11 @@
 .container {
-    display: flexbox;
+    display: flex;
     flex-direction: column;
 }
 
 .scores {
-    
+    display: flex;
+    justify-content: space-between;
 }
 
 .scores > .player {
@@ -16,7 +17,8 @@
 }
 
 .versus {
-
+    display: flex;
+    gap: 32px;
 }
 
 .versus > .player {
@@ -28,11 +30,12 @@
 }
 
 .game-text {
-
+    text-align: center;
 }
 
 .options {
-
+    display: flex;
+    gap: 16px;
 }
 
 button {
