@@ -25,7 +25,11 @@ options.forEach( o => {
 });
 
 gameBTN.addEventListener('mousedown', () => {
-    gameBTN.src = gameBTN.src.slice(0, -4) + "_down.png";
+    switch(gameState) {
+        case states.selectionPhase: gameBTN.src = "./img/submit_down.png";; break;
+        case states.resultPhase: gameBTN.src = "./img/next_down.png";; break;
+        case states.endPhase: gameBTN.src = "./img/new_down.png";; break;
+    }
 });
 
 gameBTN.addEventListener('mouseup', () => {
@@ -54,6 +58,7 @@ function selectionPhase() {
 
         if(playerWins == 5 || computerWins == 5) {
             gameBTN.src = './img/new.png';
+            gameText.textContent = playerWins == 5 ? "You won the game!" : "The computer won the game!";
             gameState = states.endPhase;
         } else {
             gameBTN.src = './img/next.png';
@@ -62,6 +67,7 @@ function selectionPhase() {
         
     } else {
         gameText.textContent += '!';
+        gameBTN.src = './img/submit.png';
     }
 }
 
