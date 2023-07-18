@@ -24,7 +24,11 @@ options.forEach( o => {
     });
 });
 
-gameBTN.addEventListener('click', () => {
+gameBTN.addEventListener('mousedown', () => {
+    gameBTN.src = gameBTN.src.slice(0, -4) + "_down.png";
+});
+
+gameBTN.addEventListener('mouseup', () => {
     processGameClick();
 });
 
@@ -49,10 +53,10 @@ function selectionPhase() {
         scores[1].textContent = `Computer: ${computerWins}`;
 
         if(playerWins == 5 || computerWins == 5) {
-            gameBTN.src = './img/new_up.png';
+            gameBTN.src = './img/new.png';
             gameState = states.endPhase;
         } else {
-            gameBTN.src = './img/next_up.png';
+            gameBTN.src = './img/next.png';
             gameState = states.resultPhase;
         }
         
@@ -67,7 +71,7 @@ function resultPhase() {
     computerElement.src = "";
     selectionElement.src = "";
     playerChoice = "";
-    gameBTN.src = "./img/submit_up.png";
+    gameBTN.src = "./img/submit.png";
     gameText.textContent = "Choose Your Weapon!";
     
 }
